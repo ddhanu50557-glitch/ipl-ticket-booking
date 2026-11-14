@@ -9,52 +9,27 @@
     <header>
         <h2>IPL 2026 Ticket Booking</h2>
         <a href="#matches">Matches</a> | 
-        <a href="booking.html">Book Ticket</a> | 
-        <a href="#my-bookings">My Bookings</a> | 
+        <a href="#booking">Book Ticket</a> | 
+        <a href="booking.html">Full Form Page</a> | 
         <a href="#guidelines">Guidelines</a>
     </header>
 
     <section>
         <h1>Experience The Stadium Energy Live!</h1>
         <a href="#matches"><button type="button">View Schedule</button></a>
-        <a href="booking.html"><button type="button">Book Ticket</button></a>
-    </section>
-
-    <section>
-        <h2>About IPL 2026</h2>
-        <h3>Popular Teams</h3>
-        <ul>
-            <li>RCB</li>
-            <li>CSK</li>
-            <li>MI</li>
-        </ul>
-        <h3>Major Venues</h3>
-        <ul>
-            <li>Bengaluru</li>
-            <li>Mumbai</li>
-            <li>Chennai</li>
-        </ul>
+        <button type="button" onclick="scrollToBooking('Match 01: RCB vs CSK')">Book Ticket</button>
     </section>
 
     <section id="matches">
         <h2>Match Schedule</h2>
-        <label><b>Filter by Team:</b></label>
-        <select style="max-width: 250px;">
-            <option>All Teams</option>
-            <option>RCB</option>
-            <option>CSK</option>
-        </select>
-        <br>
-
         <table border="1">
             <tr>
-                <th>Match Number</th>
+                <th>Match No</th>
                 <th>Teams</th>
                 <th>Date & Time</th>
                 <th>Venue</th>
                 <th>General</th>
                 <th>Premium</th>
-                <th>VIP</th>
                 <th>Action</th>
             </tr>
             <tr>
@@ -64,30 +39,45 @@
                 <td>Bengaluru</td>
                 <td>₹1,200</td>
                 <td>₹3,500</td>
-                <td>₹8,000</td>
-                <td><a href="booking.html"><button type="button">Book</button></a></td>
+                <td><button type="button" onclick="scrollToBooking('Match 01: RCB vs CSK')">Book</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>MI vs KKR</td>
+                <td>29 March 2026, 7:30 PM</td>
+                <td>Mumbai</td>
+                <td>₹1,500</td>
+                <td>₹4,000</td>
+                <td><button type="button" onclick="scrollToBooking('Match 02: MI vs KKR')">Book</button></td>
             </tr>
         </table>
     </section>
 
-    <section id="my-bookings">
-        <h2>My Ticket Bookings</h2>
-        <table border="1">
-            <tr>
-                <th>Booking ID</th>
-                <th>Match</th>
-                <th>Stand</th>
-                <th>Tickets</th>
-                <th>Total Price</th>
-            </tr>
-            <tr>
-                <td>#IPL101</td>
-                <td>RCB vs CSK</td>
-                <td>General</td>
-                <td>2</td>
-                <td>₹2,400</td>
-            </tr>
-        </table>
+    <!-- Booking Form Section for Smooth Scroll -->
+    <section id="booking">
+        <h2>Quick Ticket Booking Form</h2>
+        <form id="ticketForm">
+            <label><b>Full Name *</b></label>
+            <input type="text" minlength="3" placeholder="Enter your name" required>
+
+            <label><b>Email Address *</b></label>
+            <input type="email" placeholder="example@gmail.com" required>
+
+            <label><b>Phone Number *</b></label>
+            <input type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" required>
+
+            <label><b>Selected Match *</b></label>
+            <select id="matchSelect" required>
+                <option value="Match 01: RCB vs CSK">Match 01: RCB vs CSK</option>
+                <option value="Match 02: MI vs KKR">Match 02: MI vs KKR</option>
+            </select>
+
+            <label><b>Number of Tickets (1-6) *</b></label>
+            <input type="number" min="1" max="6" value="1" required>
+
+            <input type="submit" value="Confirm Booking">
+            <input type="reset" value="Reset">
+        </form>
     </section>
 
     <section id="guidelines">
@@ -100,15 +90,17 @@
             <h3>ID Proof Requirement</h3>
             <p>Government ID proof is mandatory.</p>
         </div>
-        <div>
-            <h3>Prohibited Items</h3>
-            <p>Coins, outside food, and bags not allowed.</p>
-        </div>
     </section>
 
     <footer>
         <p>&copy; 2026 IPL Ticket Booking. All Rights Reserved.</p>
     </footer>
+
+    <!-- Toast Notification Element -->
+    <div id="toast"></div>
+
+    <!-- Link JavaScript File -->
+    <script src="app.js"></script>
 
 </body>
 </html>
